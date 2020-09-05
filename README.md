@@ -14,13 +14,6 @@ a **simple** multi service **dockrized** project including a **react** frontend,
 + material-ui 
 + Docker
 
-The app and servers are routed through nginx proxy to http://localhost:3050  
-**web** service (React app) will be available in http://localhost:3050/  
-**auth** service (auth service with jwt based auth & handshake endpoint) will be available in http://localhost:3050/auth/v1/some/route  
-**fib** service will be available in http://localhost:3050/fib/v1/some/route  
-**worker** just provides a sample (redundant) action just to show the capability.  
-
-
 ## Start up = Development mode 🤼‍♂️
 
 add a .env file in the root of the project
@@ -49,6 +42,13 @@ and then...
 `yarn compose`
 ~~~~
 And You're done! 🤸
+
+All of the services are routed through nginx proxy to http://localhost:3050  
+**web** service (React app) will be available in http://localhost:3050/  
+**auth** service (jwt based auth & handshake endpoint) will be available in http://localhost:3050/auth/v1/some/route  
+**fib** service will be available in http://localhost:3050/fib/v1/some/route  
+**worker** just provides a sample (redundant) action just to show the capability.  
+
 ### Starting each service
 
 each of the service has a few scripts in common: 

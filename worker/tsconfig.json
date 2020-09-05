@@ -1,0 +1,22 @@
+{
+    // "extends": "../modules/types",
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "es5",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "baseUrl": "./src",
+        "strict": true,
+        "noImplicitAny": true,
+        "resolveJsonModule": true,
+        "noUnusedParameters": true,
+        "paths": {
+            "@types": ["../../modules/types"]
+        }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts", "junk"],
+    "lib": ["es2015"]
+}

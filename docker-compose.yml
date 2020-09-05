@@ -1,0 +1,158 @@
+version: "3.3"
+services:
+  postgres:
+    image: "postgres:latest"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  redis:
+    image: "redis:latest"
+    env_file:
+      - .env
+
+  fib:
+    depends_on:
+      - postgres
+      - redis
+    build:
+      context: ./fib
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /application/fib/dist
+      - /application/fib/node_modules
+      - ./fib:/application/fib
+    env_file:
+      - .env
+    environment:
+      - PORT=8081
+      - SERVICE_NAME=fib
+
+  # streamer:
+  #   depends_on:
+  #     - postgres
+  #     - redis
+  #   build:
+  #     context: ./streamer
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - /application/streamer/dist
+  #     - /application/streamer/node_modules
+  #     - ./streamer:/application/streamer
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 8085:8085
+  #   environment:
+  #     - PORT=8085
+  #     - SERVICE_NAME=streamer
+
+  auth:
+    restart: always
+    depends_on:
+      - postgres
+      - redis
+    build:
+      context: ./auth
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /application/auth/dist
+      - /application/auth/node_modules
+      - ./auth:/application/auth
+    env_file:
+      - .env
+    environment:
+      # - NODE_ENV=production
+      - PORT=8083
+      - SERVICE_NAME=auth
+
+  worker:
+    depends_on:
+      - redis
+    build:
+      context: ./worker
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /application/worker/node_modules
+      - /application/worker/dist
+      - ./worker:/application/worker
+    env_file:
+      - .env
+    environment:
+      - PORT=8082
+
+  web:
+    ports:
+      - 8080:8080
+    depends_on:
+      - auth
+      - fib
+      - worker
+      - redis
+      - postgres
+    build:
+      context: ./web
+      dockerfile: Dockerfile.dev
+    stdin_open: true
+    volumes:
+      - /application/app/node_modules
+      - ./web:/application/app
+    env_file:
+      - .env
+    environment:
+      - PORT=8080
+      - HOST=0.0.0.0
+
+  nginx:
+    depends_on:
+      - fib
+      - web
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3050:80"
+    env_file:
+      - .env
+    environment:
+      - WEB_TITLE=myCustomTitle
+      - WEB_PORT=8080
+      - API_PORT=8081
+      - WORKER_PORT=8082
+      - AUTH_PORT=8083
+      - PUBLIC_PORT=3050
+      - SOCK_HOST=localhost
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    links:
+      - postgres:postgres
+    env_file:
+      - .env
+    ports:
+      - 8084:80
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  # web-test:
+  #   build:
+  #     context: ./web
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - /application/app/node_modules
+  #     - ./web:/application/app
+  #   command: ["yarn", "test"]
+  # auth-test:
+  #   build:
+  #     context: ./auth
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - /application/auth-test/node_modules
+  #     - ./auth:/application/auth-test
+  #   command: ["yarn", "test"]
+
+volumes:
+  postgres-data:
+  pgadmin-data:

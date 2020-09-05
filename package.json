@@ -1,0 +1,16 @@
+{
+  "name": "multi-docker",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "compose": "docker-compose down && docker-compose up -d pgadmin && docker-compose up --build auth web fib nginx postgres redis",
+    "web": "yarn --cwd ./web",
+    "auth": "yarn --cwd ./auth",
+    "streamer": "yarn --cwd ./streamer",
+    "fib": "yarn --cwd ./fib",
+    "worker": "yarn --cwd ./worker",
+    "dev:local": "docker-compose -f docker-compose.local.yml up --build",
+    "clean": "rimraf ./**/dist",
+    "clean:mod": "rimraf ./**/node_modules"
+  }
+}

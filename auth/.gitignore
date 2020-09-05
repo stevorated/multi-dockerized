@@ -1,0 +1,25 @@
+# Random Crap
+.DS_Store
+
+# Idea Specific
+.vscode
+.idea/*
+!.idea/runConfigurations
+
+# External Libraries
+**/node_modules
+yarn.lock
+yarn-error.log
+
+# Local Config Files
+.env
+**/.env
+
+.versions
+
+# Compiled files
+**/dist
+
+# Test Report Files
+reports
+logs

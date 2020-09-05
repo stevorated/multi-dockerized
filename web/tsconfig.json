@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "es6",
+        "module": "commonjs",
+        "types": ["react", "jest", "node"],
+        "lib": ["es6", "dom", "es2017", "es2015"],
+        "jsx": "react",
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "paths": {},
+        "allowJs": false,
+        "sourceMap": true,
+        "removeComments": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true
+    },
+    "exclude": ["node_modules", "junk"]
+}

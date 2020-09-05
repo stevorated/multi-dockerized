@@ -1,0 +1,8 @@
+FROM node:alpine
+RUN echo "[START]: development build start..."
+WORKDIR /application/auth
+COPY package.json .
+RUN yarn
+COPY . .
+RUN echo "[DONE]: development build done"
+CMD ["yarn", "dev"]

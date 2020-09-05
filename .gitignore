@@ -1,0 +1,34 @@
+# Random Crap
+.DS_Store
+/junk
+/_junk
+nginstreamer
+example
+
+# Idea Specific
+.vscode
+.idea
+.idea/*
+!.idea/runConfigurations
+
+# External Libraries
+**/node_modules
+
+# Local Config Files
+.env
+**/.env
+
+.versions
+
+# Compiled files
+**/dist
+yarn.lock
+
+#TODO: REMOVE
+.travis.yml
+/modules
+
+# Test Report Files
+tests
+reports
+/__etc

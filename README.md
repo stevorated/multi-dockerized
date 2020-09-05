@@ -7,7 +7,7 @@ a **simple** multi service **dockrized** project including a **react** frontend,
 ### Stack:
 + Nginx (reverse proxy) 
 + Node 
-+ Postresql 
++ Postresql with pgadmin in port 8084!!
 + Redis 
 + TypeScript 
 + React 
@@ -48,6 +48,8 @@ All of the services are routed through nginx proxy to http://localhost:3050
 **auth** service (jwt based auth & handshake endpoint) will be available in http://localhost:3050/auth/v1/some/route  
 **fib** service will be available in http://localhost:3050/fib/v1/some/route  
 **worker** just provides a sample (redundant) action just to show the capability.  
+In addition you also get
+**pgadmin** all this will also expose in localhost:8084 
 
 ### Starting each service
 

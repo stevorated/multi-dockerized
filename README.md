@@ -21,10 +21,34 @@ The app and servers are routed through nginx proxy to http://localhost:3050
 **worker** just provides a sample (redundant) action just to show the capability.  
 
 
-## Start up = Development mode
+## Start up = Development mode 🤼‍♂️
 
+add a .env file in the root of the project
+
+here's an example:
+~~~~
+ APP_DOMAIN=http://localhost:3050  
+ NODE_ENV=development  
+ SITE_NAME="my example site"  
+ REDIS_HOST=redis  
+ REDIS_PORT=6379  
+ POSTGRES_HOST=postgres  
+ POSTGRES_PORT=5432  
+ POSTGRES_DB=auth_db  
+ POSTGRES_USER=postgres  
+ POSTGRES_PASSWORD=postgres_password  
+ PGADMIN_DEFAULT_EMAIL=admin  
+ PGADMIN_DEFAULT_PASSWORD=admin  
+ PGADMIN_LISTEN_PORT=80  
+ SG_API_KEY=???? (you need to add your key)
+ TZ=Asia/Tel_Aviv
+ PGTZ=Asia/Tel_Aviv
+~~~~
+and then...
+~~~~
 `yarn compose`
-
+~~~~
+And You're done! 🤸
 ### Starting each service
 
 each of the service has a few scripts in common: 

@@ -31,11 +31,11 @@ app.use(errorHandler({ debug: process.env.NODE_ENV === 'development' }));
       password: pgPassword,
       database: pgDb,
       entities: [User, Log],
-      synchronize: true,
       logging: false,
       schema,
     });
     await conn.query(`CREATE SCHEMA IF NOT EXISTS ${schema};`);
+    await conn.synchronize();
     logger.info('Connection to Databases established!');
   } catch (err) {
     logger.error(`DB Connection Error: ${err.message}`);

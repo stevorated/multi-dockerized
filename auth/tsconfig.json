@@ -1,22 +1,23 @@
 {
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "module": "commonjs",
-    "target": "es5",
-    "moduleResolution": "node",
-    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "/dist",
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "lib": ["es2015", "es2017", "es6"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false, // is good?
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
-    "lib": ["es2015", "es2017", "es6"],
-    "allowSyntheticDefaultImports": true,
-    "noUnusedParameters": true
+    "target": "es5",
+    "types": ["jest", "node"]
   },
   "include": ["./src"],
   "exclude": ["node_modules", "**/*.spec.ts", "junk"]

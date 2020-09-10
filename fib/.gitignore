@@ -17,6 +17,8 @@
 
 # Compiled files
 **/dist
+yarn.lock
+yarn-error.log
 
 # Test Report Files
 reports

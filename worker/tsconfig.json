@@ -1,20 +1,18 @@
 {
     // "extends": "../modules/types",
     "compilerOptions": {
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "target": "es5",
-        "sourceMap": true,
-        "moduleResolution": "node",
-        "outDir": "dist",
         "baseUrl": "./src",
-        "strict": true,
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
         "noImplicitAny": true,
-        "resolveJsonModule": true,
         "noUnusedParameters": true,
-        "paths": {
-            "@types": ["../../modules/types"]
-        }
+        "outDir": "dist",
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "es5",
+        "types": ["node", "jest"]
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.spec.ts", "junk"],

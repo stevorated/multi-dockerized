@@ -16,7 +16,7 @@ const app = express();
 const auth = new AuthHelper();
 
 applyMiddlewares(middlewares, app);
-app.use(auth.addUserToRequest);
+app.use(auth.tokenToRequest);
 app.use(baseRouter);
 app.use(errorHandler({ debug: process.env.NODE_ENV === 'development' }));
 

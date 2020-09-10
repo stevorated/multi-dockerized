@@ -1,15 +1,15 @@
-# Random Crap
-.DS_Store
-/junk
-/_junk
-nginstreamer
-example
-
 # Idea Specific
 .vscode
 .idea
 .idea/*
 !.idea/runConfigurations
+
+# Random Crap
+.DS_Store
+/junk
+/_junk
+/nginstreamer
+/example
 
 # External Libraries
 **/node_modules
@@ -22,7 +22,8 @@ example
 
 # Compiled files
 **/dist
-yarn.lock
+**/yarn.lock
+**/yarn-error.log
 
 #TODO: REMOVE
 .travis.yml

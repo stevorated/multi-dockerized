@@ -111,7 +111,7 @@ export class AuthHelper {
     return Promise.all([token, refreshToken]);
   };
 
-  addUserToRequest = async (
+  tokenToRequest = async (
     req: Request,
     res: Response,
     next: NextFunction

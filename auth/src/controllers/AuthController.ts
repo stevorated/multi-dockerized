@@ -205,7 +205,7 @@ export class AuthController {
       User.update(
         { id: req.user.id },
         {
-          tokenVersion: (user?.tokenVersion ? user?.tokenVersion : 0) + 2,
+          tokenVersion: user?.tokenVersion ? user?.tokenVersion : 1,
         }
       )
     );

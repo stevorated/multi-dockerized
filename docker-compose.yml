@@ -104,13 +104,13 @@ services:
       - PORT=8080
       - HOST=0.0.0.0
 
-  nginx:
+  proxy:
     depends_on:
       - fib
       - web
     restart: always
     build:
-      context: ./nginx
+      context: ./proxy
       dockerfile: Dockerfile.dev
     ports:
       - "3050:80"

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "compose": "docker-compose down && docker-compose up -d pgadmin && docker-compose up --build auth web fib nginx postgres redis",
+    "compose": "docker-compose down && docker-compose up -d pgadmin && docker-compose up --build auth web fib proxy postgres redis",
     "web": "yarn --cwd ./web",
     "auth": "yarn --cwd ./auth",
     "streamer": "yarn --cwd ./streamer",
